@@ -15,7 +15,17 @@ public class PersonController {
     }
 
     @PostMapping
-    public void addPerson(@RequestBody Person person){
-        personService.addNewPerson(person);
+    public Person addPerson(@RequestBody Person person){
+        return personService.addNewPerson(person);
+    }
+
+    @DeleteMapping("/{personId}")
+    public void deletePersonById(@PathVariable int personId){
+        personService.deletePersonById(personId);
+    }
+
+    @DeleteMapping("/{username}")
+    public void deletePersonByUsername(@PathVariable String username){
+        personService.deletePersonByUsername(username);
     }
 }

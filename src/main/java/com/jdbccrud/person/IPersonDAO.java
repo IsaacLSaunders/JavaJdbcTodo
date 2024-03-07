@@ -10,9 +10,11 @@ public interface IPersonDAO {
 
     Person selectPersonByUsername();
 
-    int addPerson(Person person);
+    Person addPerson(Person person);
 
-    boolean deletePerson();
+    int deletePersonById(int personId);
+
+    int deletePersonByUsername(String username);
 
     Person editPerson();
 

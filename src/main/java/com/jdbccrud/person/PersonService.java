@@ -12,8 +12,16 @@ private final PersonDataAccessService personDataAccessService;
         this.personDataAccessService = personDataAccessService;
     }
 
-    public void addNewPerson(Person person) {
-            personDataAccessService.addPerson(person);
+    public Person addNewPerson(Person person) {
+            return personDataAccessService.addPerson(person);
+    }
+
+    public void deletePersonById(int personId){
+        personDataAccessService.deletePersonById(personId);
+    }
+
+    public void deletePersonByUsername(String username){
+        personDataAccessService.deletePersonByUsername(username);
     }
 
 }

@@ -1,3 +1,6 @@
 
+V
+java:S3516""9Refactor this method to not always return the same value.(´¹Àú8Ç˜Èùà1
 H
-java:S1168"+Return an empty collection instead of null.(¥¹ï8š”‘»à1
+java:S1168"+Return an empty collection instead of null.(¥¹ï8æíŞÎà1
+G	java:S106M"+Replace this use of System.out by a logger.(‡É»á8éíŞÎà1
