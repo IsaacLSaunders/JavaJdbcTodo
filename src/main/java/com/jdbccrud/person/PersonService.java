@@ -3,6 +3,8 @@ package com.jdbccrud.person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonService {
 private final PersonDataAccessService personDataAccessService;
@@ -24,4 +26,19 @@ private final PersonDataAccessService personDataAccessService;
         personDataAccessService.deletePersonByUsername(username);
     }
 
+    public List<Person> getAllPersons(){
+        return personDataAccessService.selectAllPersons();
+    }
+
+    public Person updatePerson(Person person, int personId) {
+        return personDataAccessService.updatePerson(person, personId);
+    }
+
+    public Person getPersonByUsername(String username) {
+        return personDataAccessService.getPersonByUsername(username);
+    }
+
+    public Person getPersonById(int id) {
+        return personDataAccessService.getPersonById(id);
+    }
 }
