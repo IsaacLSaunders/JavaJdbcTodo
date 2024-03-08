@@ -6,18 +6,20 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="false" />
+    <show-object-properties value="true" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="31071151-796b-40f1-ab54-c864577a8357">
-      <console name="todolist" type="STANDARD" schema="" session="Main" />
+      <console name="todolist" type="STANDARD" schema="public" session="Main"><![CDATA[INSERT INTO person(version, username, first_name, last_name) VALUES (1, 'john1', 'john', 'john');
+
+SELECT * FROM person;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
