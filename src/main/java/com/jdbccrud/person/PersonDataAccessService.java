@@ -42,8 +42,6 @@ public class PersonDataAccessService implements IPersonDAO{
                 INSERT INTO person(version, username, first_name, last_name)
                 VALUES (?,?,?,?) RETURNING id;
                 """;
-        //this version of .update takes in the sql statement and a list of arguments that match to the ?'s
-        //int inputId = jdbcTemplate.update(insertSql, person.getVersion(), person.getUsername(), person.getFirstName(), person.getLastName());
 
         //jdbcTemplate.update has an overloaded method that takes a callback and a KeyHolder as parameters
             //this method gives us the ability to use RETURNING from our postgreSQL statement

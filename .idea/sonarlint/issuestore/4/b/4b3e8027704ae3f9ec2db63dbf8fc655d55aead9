@@ -1,13 +1,12 @@
 
-m
-java:S2259f"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(¿µÁşÿÿÿÿ8Èı“âá1
 b
-java:S2259B"EA "NullPointerException" could be thrown; "getKey()" can return null.(€ú‚Â8Èı“âá1
+java:S2259@"EA "NullPointerException" could be thrown; "getKey()" can return null.(€ú‚Â8Èı“âá1
 m
-java:S2259g"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.( “¿½ıÿÿÿÿ8Èı“âá1
+java:S2259d"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(¿µÁşÿÿÿÿ8Èı“âá1
+m
+java:S2259e"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.( “¿½ıÿÿÿÿ8Èı“âá1
 H
 java:S1168"+Return an empty collection instead of null.(¥¹ï8Êı“âá1
-]	java:S125."<This block of commented-out lines of code should be removed.(¸ÖÙúşÿÿÿÿ8ÕÑ–âá1
 j
-java:S32526"HUse static access with "java.sql.Statement" for "RETURN_GENERATED_KEYS".(Ùˆö¶úÿÿÿÿ8Íı“âá1
-G	java:S106i"+Replace this use of System.out by a logger.(‡É»á8Ïı“âá1
+java:S32524"HUse static access with "java.sql.Statement" for "RETURN_GENERATED_KEYS".(Ùˆö¶úÿÿÿÿ8Íı“âá1
+G	java:S106g"+Replace this use of System.out by a logger.(‡É»á8Ïı“âá1

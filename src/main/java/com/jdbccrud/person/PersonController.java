@@ -19,12 +19,12 @@ public class PersonController {
         return personService.addNewPerson(person);
     }
 
-    @DeleteMapping("/{personId}")
+    @DeleteMapping("/id/{personId}")
     public void deletePersonById(@PathVariable int personId){
         personService.deletePersonById(personId);
     }
 
-    @DeleteMapping("/{username}")
+    @DeleteMapping("/username/{username}")
     public void deletePersonByUsername(@PathVariable String username){
         personService.deletePersonByUsername(username);
     }
