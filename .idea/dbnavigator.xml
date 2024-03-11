@@ -19,7 +19,12 @@
     <connection id="31071151-796b-40f1-ab54-c864577a8357">
       <console name="todolist" type="STANDARD" schema="public" session="Main"><![CDATA[INSERT INTO person(version, username, first_name, last_name) VALUES (1, 'john1', 'john', 'john');
 
-SELECT * FROM person;]]></console>
+SELECT * FROM person;
+
+SELECT i.id, i.asignee_id, i.created_date, i.last_modified_date, i.description, i.status, i.version
+FROM item as i
+JOIN person ON i.asignee_id = person.id
+WHERE person.username = 'BiggyDB']]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
