@@ -35,8 +35,8 @@ public class ItemService{
         return itemDataAccessService.addItemByUserId(newItem, id);
     }
 
-    public Item editItemByItemId(Item editedItem, int id) {
-        return itemDataAccessService.editItemByItemId(editedItem, id);
+    public Item editItemByItemId(Item editedItem, int itemId) {
+        return itemDataAccessService.editItemByItemId(editedItem, itemId);
     }
 
     public int deleteItemByItemId(int itemId) {

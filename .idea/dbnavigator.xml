@@ -12,7 +12,7 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="false" />
+    <show-object-properties value="true" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
@@ -24,7 +24,9 @@ SELECT * FROM person;
 SELECT i.id, i.asignee_id, i.created_date, i.last_modified_date, i.description, i.status, i.version
 FROM item as i
 JOIN person ON i.asignee_id = person.id
-WHERE person.username = 'BiggyDB']]></console>
+WHERE person.username = 'BiggyDB'
+
+SELECT * FROM flyway_schema_history;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

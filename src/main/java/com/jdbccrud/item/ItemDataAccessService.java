@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,8 @@ public class ItemDataAccessService implements IItemDAO {
 
         String sql = """
                 SELECT id, asignee_id, created_date, last_modified_date, description, status, version
-                FROM item;
+                FROM item
+                ORDER BY id;
                 """;
 
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
@@ -49,6 +51,7 @@ public class ItemDataAccessService implements IItemDAO {
                 FROM item as i
                 JOIN person ON i.asignee_id = person.id
                 WHERE person.username = ?
+                ORDER BY i.id;
                 """;
 
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
@@ -69,6 +72,7 @@ public class ItemDataAccessService implements IItemDAO {
                 FROM item as i
                 JOIN person ON i.asignee_id = person.id
                 WHERE person.id = ?
+                ORDER BY i.id;
                 """;
 
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
@@ -153,18 +157,43 @@ public class ItemDataAccessService implements IItemDAO {
         return null;    }
 
     @Override
-    public Item editItemByItemId(Item editedItem, int id) {
+    public Item editItemByItemId(Item editedItem, int itemId) {
+        String updateSql = """
+                UPDATE item
+                SET description = ?, status = ?, last_modified_date = ?
+                WHERE id = ?;
+                """;
+        String retrieveNewItemSql = """
+                SELECT id, asignee_id, created_date, last_modified_date, description, status, version
+                FROM item
+                WHERE id = ?;
+                """;
+
+        jdbcTemplate.update(updateSql, editedItem.getDescription(), editedItem.getStatus(), LocalDateTime.now(), itemId);
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(retrieveNewItemSql, itemId);
+
+        if (rowSet.next()) {
+            return mapRowToItem(rowSet);
+        }
+
         return null;
     }
 
     @Override
     public int deleteItemByItemId(int itemId) {
-        return 0;
+        String sql = """
+                DELETE FROM item WHERE id = ?;
+                """;
+        return jdbcTemplate.update(sql, itemId);
     }
 
     @Override
     public int deleteAllItemsByPersonId(int personId) {
-        return 0;
+        String sql = """
+                DELETE FROM item WHERE asingee_id = ?;
+                """;
+        return jdbcTemplate.update(sql, personId);
     }
 
     private Item mapRowToItem(SqlRowSet rowSet) {

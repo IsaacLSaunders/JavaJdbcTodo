@@ -1,10 +1,10 @@
 
-b
-java:S2259F"EA "NullPointerException" could be thrown; "getKey()" can return null.(€ϊ‚Β8¤λύχα1
 n
 java:S2259΅"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.( “Ώ½ύÿÿÿÿ8¤λύχα1
 n
 java:S2259 "KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(ΏµΑώÿÿÿÿ8¤λύχα1
+b
+java:S2259F"EA "NullPointerException" could be thrown; "getKey()" can return null.(€ϊ‚Β8¤λύχα1
 j
 java:S3252:"HUse static access with "java.sql.Statement" for "RETURN_GENERATED_KEYS".(Ωφ¶ϊÿÿÿÿ8¨λύχα1
 H	java:S106£"+Replace this use of System.out by a logger.(‡Ι»α8«λύχα1
