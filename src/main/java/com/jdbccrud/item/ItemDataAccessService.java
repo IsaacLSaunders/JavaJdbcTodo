@@ -154,7 +154,8 @@ public class ItemDataAccessService implements IItemDAO {
             return mapRowToItem(rowSet);
         }
 
-        return null;    }
+        return null;
+    }
 
     @Override
     public Item editItemByItemId(Item editedItem, int itemId) {
@@ -180,14 +181,19 @@ public class ItemDataAccessService implements IItemDAO {
         return null;
     }
 
+    //TODO finish delete item by item id method
     @Override
     public int deleteItemByItemId(int itemId) {
+
+        //this method needs to also delete all instances of attached tags for the item because of the
+            //foreign key constraint
         String sql = """
                 DELETE FROM item WHERE id = ?;
                 """;
         return jdbcTemplate.update(sql, itemId);
     }
 
+    //TODO finish delete all items by person id method
     @Override
     public int deleteAllItemsByPersonId(int personId) {
         String sql = """

@@ -1,3 +1,11 @@
 
-_
-java:S2094"BRemove this empty class, write its code or make it an "interface".(¥ì¥÷8´®ìâ1
+p
+java:S1104"NMake id a static final constant or non-public and provide accessors if needed.(ÍéÌ‘øÿÿÿÿ8ƒÍóã1
+y
+java:S1104"WMake createdDate a static final constant or non-public and provide accessors if needed.(™ù·¥ıÿÿÿÿ8„Íóã1
+y
+java:S1104"\Make lastModifiedDate a static final constant or non-public and provide accessors if needed.(á€Ğ¢8„Íóã1
+m
+java:S1104"PMake name a static final constant or non-public and provide accessors if needed.( şÍ¾8„Íóã1
+u
+java:S1104"SMake version a static final constant or non-public and provide accessors if needed.(é¯ÙØúÿÿÿÿ8„Íóã1

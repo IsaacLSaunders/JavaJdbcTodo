@@ -33,9 +33,7 @@ SELECT * FROM flyway_schema_history;]]></console>
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="31071151-796b-40f1-ab54-c864577a8357" object-ref="consoles/todolist" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="31071151-796b-40f1-ab54-c864577a8357" />

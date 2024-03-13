@@ -39,3 +39,9 @@ a
 .src/main/java/com/jdbccrud/tag/TagService.java,c/4/c45ff6a8409cde349de5b22d54137cb5206064df
 h
 8src/main/java/com/jdbccrud/tag/TagDataAccessService.java,4/4/44bad7087653a9eec067a778f2cec57a43f7b1dc
+S
+#src/main/java/com/jdbccrud/item_tag,2/0/2062b486bdc61783374c884317b791e1260256b8
+e
+5src/main/java/com/jdbccrud/item_tag/Item_Tag_DTO.java,0/3/0328792482f4e743ac56819f61a63a9e87fb2506
+c
+3src/main/java/com/jdbccrud/item_tag/ItemTagDTO.java,c/8/c825d7dab879d215fb1c05969e54bfc25382d3fc

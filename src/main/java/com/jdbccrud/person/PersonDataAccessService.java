@@ -77,16 +77,20 @@ public class PersonDataAccessService implements IPersonDAO {
         return null;
     }
 
+    //TODO finish delete person by id method
     @Override
     public int deletePersonById(int personId) {
+        //to delete a person you must remove all references to the person in foreign keys in other tables
         String sql = """
                 DELETE FROM person WHERE id = ?;
                 """;
         return jdbcTemplate.update(sql, personId);
     }
 
+    //TODO finish delete person by username method
     @Override
     public int deletePersonByUsername(String username) {
+        //to delete a person you must remove all references to the person in foreign keys in other tables
         String sql = """
                 DELETE FROM person WHERE username = ?;
                 """;
