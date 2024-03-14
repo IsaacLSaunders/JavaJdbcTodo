@@ -1,7 +1,6 @@
 package com.jdbccrud.tag;
 
 import com.jdbccrud.item_tag.ItemTagDTO;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

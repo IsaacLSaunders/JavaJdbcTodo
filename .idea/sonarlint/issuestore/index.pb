@@ -45,3 +45,5 @@ e
 5src/main/java/com/jdbccrud/item_tag/Item_Tag_DTO.java,0/3/0328792482f4e743ac56819f61a63a9e87fb2506
 c
 3src/main/java/com/jdbccrud/item_tag/ItemTagDTO.java,c/8/c825d7dab879d215fb1c05969e54bfc25382d3fc
+d
+4src/main/java/com/jdbccrud/config/SwaggerConfig.java,4/8/48e08869cf44cd6083a1e14dcf242151d2b9038f
