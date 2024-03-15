@@ -3,6 +3,7 @@ package com.jdbccrud.item;
 import com.jdbccrud.person.PersonController;
 import com.jdbccrud.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +37,9 @@ public class ItemController{
     @PostMapping("/username/{username}")
     public Item addItemByUsername(@RequestBody Item newItem, @PathVariable String username) {
         return itemService.addItemByUsername(newItem, username);
+
+        //Take a look at the ResponseEntity class to return more detailed and specific Http status codes
+//        return new ResponseEntity<>(brewery, HttpStatus.CREATED)
     }
 
     @PostMapping("/userId/{userId}")

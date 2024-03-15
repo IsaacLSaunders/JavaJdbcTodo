@@ -2,6 +2,8 @@ package com.jdbccrud.item;
 
 import com.jdbccrud.person.Person;
 import com.jdbccrud.person.PersonService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -9,6 +11,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,37 +89,48 @@ public class ItemDataAccessService implements IItemDAO {
 
     @Override
     public Item addItemByUsername(Item newItem, String username) {
-        Person person = personService.getPersonByUsername(username);
 
-        Object[] params = new Object[]{person.getId(), newItem.getDescription(), newItem.getStatus(), newItem.getVersion()};
+            //use ResponseEntity and specific Exception type to handle bad username and return back the correct Http status code
+//        try {
+            Person person = personService.getPersonByUsername(username);
 
-        String insertSql = """
+            Object[] params = new Object[]{person.getId(), newItem.getDescription(), newItem.getStatus(), newItem.getVersion()};
+
+            String insertSql = """
                 INSERT INTO item (asignee_id, description, status, version)
                 VALUES (?,?,?,?)
                 RETURNING id;
                 """;
 
-        KeyHolder keyHolder = new GeneratedKeyHolder();
+            KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS);
-            //we need to set the parameters for the prepared statement manually when using this overloaded method
-            for (int i = 0; i < params.length; i++) {
-                ps.setObject(i + 1, params[i]);
-            }
-            return ps;
-        }, keyHolder);
+            jdbcTemplate.update(connection -> {
+                PreparedStatement ps = connection.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS);
+                //we need to set the parameters for the prepared statement manually when using this overloaded method
+                for (int i = 0; i < params.length; i++) {
+                    ps.setObject(i + 1, params[i]);
+                }
+                return ps;
+            }, keyHolder);
 
-        String newPersonSql = """
+            String newPersonSql = """
                 SELECT id, created_date, last_modified_date, asignee_id, description, status, version
                 FROM item WHERE id = ?;
                 """;
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(newPersonSql, keyHolder.getKey().longValue());
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(newPersonSql, keyHolder.getKey().longValue());
 
 
-        if (rowSet.next()) {
-            return mapRowToItem(rowSet);
-        }
+            if (rowSet.next()) {
+                return mapRowToItem(rowSet);
+            }
+
+//        }
+//        catch (Exception e){
+//            if(e.){
+//                return ResponseEntity<>(item, HttpStatus.BAD_REQUEST);
+//            }
+//        }
+
 
         return null;
     }
