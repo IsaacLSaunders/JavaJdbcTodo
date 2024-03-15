@@ -2,8 +2,6 @@ package com.jdbccrud.item;
 
 import com.jdbccrud.person.Person;
 import com.jdbccrud.person.PersonService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -11,17 +9,16 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ItemDataAccessService implements IItemDAO {
+public class ItemDataAccessServiceJDBC implements IItemDAO {
     private final JdbcTemplate jdbcTemplate;
     private final PersonService personService;
 
-    public ItemDataAccessService(JdbcTemplate jdbcTemplate, PersonService personService) {
+    public ItemDataAccessServiceJDBC(JdbcTemplate jdbcTemplate, PersonService personService) {
         this.jdbcTemplate = jdbcTemplate;
         this.personService = personService;
     }

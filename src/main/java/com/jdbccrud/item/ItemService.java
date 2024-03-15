@@ -8,42 +8,42 @@ import java.util.List;
 @Service
 public class ItemService{
 
-    private final ItemDataAccessService itemDataAccessService;
+    private final ItemDataAccessServiceJDBC itemDataAccessServiceJDBC;
 
     @Autowired
-    public ItemService(ItemDataAccessService itemDataAccessService) {
-        this.itemDataAccessService = itemDataAccessService;
+    public ItemService(ItemDataAccessServiceJDBC itemDataAccessServiceJDBC) {
+        this.itemDataAccessServiceJDBC = itemDataAccessServiceJDBC;
     }
 
     public List<Item> getAllItems() {
-        return itemDataAccessService.getAllItems();
+        return itemDataAccessServiceJDBC.getAllItems();
     }
 
     public List<Item> getAllItemsByUsername(String username) {
-        return itemDataAccessService.getAllItemsByUsername(username);
+        return itemDataAccessServiceJDBC.getAllItemsByUsername(username);
     }
 
     public List<Item> getAllItemsByUserId(int userId) {
-        return itemDataAccessService.getAllItemsByUserId(userId);
+        return itemDataAccessServiceJDBC.getAllItemsByUserId(userId);
     }
 
     public Item addItemByUsername(Item newItem, String username) {
-        return itemDataAccessService.addItemByUsername(newItem, username);
+        return itemDataAccessServiceJDBC.addItemByUsername(newItem, username);
     }
 
     public Item addItemByUserId(Item newItem, int id) {
-        return itemDataAccessService.addItemByUserId(newItem, id);
+        return itemDataAccessServiceJDBC.addItemByUserId(newItem, id);
     }
 
     public Item editItemByItemId(Item editedItem, int itemId) {
-        return itemDataAccessService.editItemByItemId(editedItem, itemId);
+        return itemDataAccessServiceJDBC.editItemByItemId(editedItem, itemId);
     }
 
     public int deleteItemByItemId(int itemId) {
-        return itemDataAccessService.deleteItemByItemId(itemId);
+        return itemDataAccessServiceJDBC.deleteItemByItemId(itemId);
     }
 
     public int deleteAllItemsByPersonId(int personId) {
-        return itemDataAccessService.deleteAllItemsByPersonId(personId);
+        return itemDataAccessServiceJDBC.deleteAllItemsByPersonId(personId);
     }
 }

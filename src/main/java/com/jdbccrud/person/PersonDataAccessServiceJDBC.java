@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PersonDataAccessService implements IPersonDAO {
+public class PersonDataAccessServiceJDBC implements IPersonDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public PersonDataAccessService(JdbcTemplate jdbcTemplate) {
+    public PersonDataAccessServiceJDBC(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

@@ -9,42 +9,42 @@ import java.util.List;
 @Service
 public class TagService{
 
-    private final TagDataAccessService tagDataAccessService;
+    private final TagDataAccessServiceJDBC tagDataAccessServiceJDBC;
 
     @Autowired
-    public TagService(TagDataAccessService tagDataAccessService) {
-        this.tagDataAccessService = tagDataAccessService;
+    public TagService(TagDataAccessServiceJDBC tagDataAccessServiceJDBC) {
+        this.tagDataAccessServiceJDBC = tagDataAccessServiceJDBC;
     }
 
     public List<Tag> getAllTags() {
-        return tagDataAccessService.getAllTags();
+        return tagDataAccessServiceJDBC.getAllTags();
     }
 
     public Tag getTagById(int tagId) {
-        return tagDataAccessService.getTagById(tagId);
+        return tagDataAccessServiceJDBC.getTagById(tagId);
     }
 
     public Tag getTagByItemId(int itemId) {
-        return tagDataAccessService.getTagByItemId(itemId);
+        return tagDataAccessServiceJDBC.getTagByItemId(itemId);
     }
 
     public Tag getTagByName(String tagName) {
-        return tagDataAccessService.getTagByName(tagName);
+        return tagDataAccessServiceJDBC.getTagByName(tagName);
     }
 
     public Tag editTagById(Tag newTag, int tagId) {
-        return tagDataAccessService.editTagById(newTag, tagId);
+        return tagDataAccessServiceJDBC.editTagById(newTag, tagId);
     }
 
     public int deleteTagById(int tagId) {
-        return tagDataAccessService.deleteTagById(tagId);
+        return tagDataAccessServiceJDBC.deleteTagById(tagId);
     }
 
     public Tag addTag(Tag newTag) {
-        return tagDataAccessService.addTag(newTag);
+        return tagDataAccessServiceJDBC.addTag(newTag);
     }
 
     public ItemTagDTO connectItemToTag(int itemId, int tagId){
-        return tagDataAccessService.connectItemToTag(itemId, tagId);
+        return tagDataAccessServiceJDBC.connectItemToTag(itemId, tagId);
     }
     }

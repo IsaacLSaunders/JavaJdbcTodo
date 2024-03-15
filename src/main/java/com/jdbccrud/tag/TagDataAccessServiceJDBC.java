@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class TagDataAccessService implements ITagDAO {
+public class TagDataAccessServiceJDBC implements ITagDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public TagDataAccessService(JdbcTemplate jdbcTemplate) {
+    public TagDataAccessServiceJDBC(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

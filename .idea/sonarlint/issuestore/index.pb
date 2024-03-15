@@ -47,3 +47,11 @@ c
 3src/main/java/com/jdbccrud/item_tag/ItemTagDTO.java,c/8/c825d7dab879d215fb1c05969e54bfc25382d3fc
 d
 4src/main/java/com/jdbccrud/config/SwaggerConfig.java,4/8/48e08869cf44cd6083a1e14dcf242151d2b9038f
+n
+>src/main/java/com/jdbccrud/item/ItemDataAccessServiceJDBC.java,1/f/1fe71ea9ae0cd2701492f8e079cbf95cbb4749fc
+s
+Csrc/main/java/com/jdbccrud/item/ItemDataAccessServiceHibernate.java,6/1/615715ea703fdc9a79c163e9aba687510be31ff6
+w
+Gsrc/main/java/com/jdbccrud/person/PersonDataAccessServiceHibernate.java,f/0/f0f17932a037a372f523368785feb341e8badef7
+q
+Asrc/main/java/com/jdbccrud/tag/TagDataAccessServiceHibernate.java,1/3/138d79d7ffad5e341dad0cd361254b941a61796c
