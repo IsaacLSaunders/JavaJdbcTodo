@@ -31,11 +31,4 @@ public class DatasourceConfig {
         return new JdbcTemplate(hikariDataSource);
     }
 
-    //this could be another way to create a HikariDataSource
-//    @Bean
-//    public HikariDataSource testHikariDataSource(){
-//        HikariConfig hc = new HikariConfig("src/main/resources/application.properties");
-//        return new HikariDataSource(hc);
-//    }
-
 }

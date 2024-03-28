@@ -15,8 +15,6 @@ g
 7src/main/java/com/jdbccrud/person/PersonController.java,a/8/a84887a9f1aa24df67f6a3f9c282a5dc3deb8fd6
 d
 4src/main/java/com/jdbccrud/person/PersonService.java,e/7/e7b178b763c62e1ee0102f3a9fc466d99bb86213
-n
->src/main/java/com/jdbccrud/person/PersonDataAccessService.java,4/b/4b3e8027704ae3f9ec2db63dbf8fc655d55aead9
 C
 docker-compose.yaml,e/f/ef8def03dc8f162799089e9b5f4321201c8810d5
 ]
@@ -25,8 +23,6 @@ Y
 )src/main/java/com/jdbccrud/item/Item.java,e/c/eca84a0357eb056f86b7615d892c5291e9dd6e43
 c
 3src/main/java/com/jdbccrud/item/ItemController.java,5/4/5496b6c987c10648c539634e3e3c2a7569c02701
-j
-:src/main/java/com/jdbccrud/item/ItemDataAccessService.java,c/e/ce9225ee8f5fb5389e5830f38d8a92767671d6f6
 `
 0src/main/java/com/jdbccrud/item/ItemService.java,3/1/31e532f557873c54f97ec80709c3fbc9330f53a5
 [
@@ -37,12 +33,8 @@ a
 1src/main/java/com/jdbccrud/tag/TagController.java,4/4/448736ba45dd561b05a5f3b6f99e5c0354ac1d5f
 ^
 .src/main/java/com/jdbccrud/tag/TagService.java,c/4/c45ff6a8409cde349de5b22d54137cb5206064df
-h
-8src/main/java/com/jdbccrud/tag/TagDataAccessService.java,4/4/44bad7087653a9eec067a778f2cec57a43f7b1dc
 S
 #src/main/java/com/jdbccrud/item_tag,2/0/2062b486bdc61783374c884317b791e1260256b8
-e
-5src/main/java/com/jdbccrud/item_tag/Item_Tag_DTO.java,0/3/0328792482f4e743ac56819f61a63a9e87fb2506
 c
 3src/main/java/com/jdbccrud/item_tag/ItemTagDTO.java,c/8/c825d7dab879d215fb1c05969e54bfc25382d3fc
 d
@@ -55,3 +47,9 @@ w
 Gsrc/main/java/com/jdbccrud/person/PersonDataAccessServiceHibernate.java,f/0/f0f17932a037a372f523368785feb341e8badef7
 q
 Asrc/main/java/com/jdbccrud/tag/TagDataAccessServiceHibernate.java,1/3/138d79d7ffad5e341dad0cd361254b941a61796c
+l
+<src/main/java/com/jdbccrud/tag/TagDataAccessServiceJDBC.java,b/0/b066cf96823bc6d87960638cad6662f8114783c3
+p
+@src/main/java/com/jdbccrud/exception/GlobalExceptionHandler.java,5/3/534983060e20071b9027dc5eb5aff8fcb88f5bed
+r
+Bsrc/main/java/com/jdbccrud/person/PersonDataAccessServiceJDBC.java,2/6/2608acfd412779dab9ccb243b3cc2b718d35dad2

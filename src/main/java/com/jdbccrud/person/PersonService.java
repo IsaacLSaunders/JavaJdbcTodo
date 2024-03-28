@@ -3,19 +3,22 @@ package com.jdbccrud.person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class PersonService {
 private final PersonDataAccessServiceJDBC personDataAccessServiceJDBC;
+private final PersonDataAccessServiceHibernate personDataAccessServiceHibernate;
 
     @Autowired
-    public PersonService(PersonDataAccessServiceJDBC personDataAccessServiceJDBC) {
+    public PersonService(PersonDataAccessServiceJDBC personDataAccessServiceJDBC, PersonDataAccessServiceHibernate personDataAccessServiceHibernate) {
         this.personDataAccessServiceJDBC = personDataAccessServiceJDBC;
+        this.personDataAccessServiceHibernate = personDataAccessServiceHibernate;
     }
 
     public Person addNewPerson(Person person) {
-            return personDataAccessServiceJDBC.addPerson(person);
+            return personDataAccessServiceHibernate.addPerson(person);
     }
 
     public void deletePersonById(int personId){
@@ -27,7 +30,7 @@ private final PersonDataAccessServiceJDBC personDataAccessServiceJDBC;
     }
 
     public List<Person> getAllPersons(){
-        return personDataAccessServiceJDBC.selectAllPersons();
+        return personDataAccessServiceHibernate.selectAllPersons();
     }
 
     public Person updatePerson(Person person, int personId) {
@@ -39,6 +42,6 @@ private final PersonDataAccessServiceJDBC personDataAccessServiceJDBC;
     }
 
     public Person getPersonById(int id) {
-        return personDataAccessServiceJDBC.getPersonById(id);
+        return personDataAccessServiceHibernate.getPersonById(id);
     }
 }

@@ -3,6 +3,7 @@ package com.jdbccrud.item;
 import com.jdbccrud.person.PersonController;
 import com.jdbccrud.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,7 @@ public class ItemController{
         return itemService.getAllItemsByUserId(userId);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/username/{username}")
     public Item addItemByUsername(@RequestBody Item newItem, @PathVariable String username) {
         return itemService.addItemByUsername(newItem, username);
@@ -42,6 +44,7 @@ public class ItemController{
 //        return new ResponseEntity<>(brewery, HttpStatus.CREATED)
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/userId/{userId}")
     public Item addItemByUserId(@RequestBody Item newItem, @PathVariable int userId) {
         return itemService.addItemByUserId(newItem, userId);

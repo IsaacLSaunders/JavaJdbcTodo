@@ -1,10 +1,0 @@
-
-p
-java:S1104"NMake id a static final constant or non-public and provide accessors if needed.(ÍéÌ‘øÿÿÿÿ8ßºúŸã1
-t
-java:S1104"RMake itemId a static final constant or non-public and provide accessors if needed.(óªƒŒúÿÿÿÿ8ßºúŸã1
-n
-java:S1104"QMake tagId a static final constant or non-public and provide accessors if needed.(íõŠõ8ßºúŸã1
-n	java:S101	"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(äˆ‘ıÿÿÿÿ8àºúŸã1
->
-java:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ8ãºúŸã1

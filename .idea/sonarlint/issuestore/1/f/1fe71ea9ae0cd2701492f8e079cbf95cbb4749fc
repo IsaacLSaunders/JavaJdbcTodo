@@ -1,12 +1,12 @@
 
-b
-java:S2259u"EA "NullPointerException" could be thrown; "getKey()" can return null.(€ú‚Â8Ã ––ä1
 h
 java:S2259ß"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(ŸµÍ	8Ã ––ä1
-n
-java:S2259Ş"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(ì£ºÿÿÿÿÿ8Ã ––ä1
 c
 java:S2259¡"EA "NullPointerException" could be thrown; "getKey()" can return null.(€ú‚Â8Ã ––ä1
+n
+java:S2259Ş"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(ì£ºÿÿÿÿÿ8Ã ––ä1
+b
+java:S2259u"EA "NullPointerException" could be thrown; "getKey()" can return null.(€ú‚Â8Ã ––ä1
 ]	java:S125["<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8É ––ä1
 j
 java:S3252i"HUse static access with "java.sql.Statement" for "RETURN_GENERATED_KEYS".(Ùˆö¶úÿÿÿÿ8Ì ––ä1
