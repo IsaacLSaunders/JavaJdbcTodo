@@ -8,12 +8,12 @@ import java.util.List;
 
 @Service
 public class PersonService {
-private final PersonDataAccessServiceJDBC personDataAccessServiceJDBC;
+//private final PersonDataAccessServiceJDBC personDataAccessServiceJDBC;
 private final PersonDataAccessServiceHibernate personDataAccessServiceHibernate;
 
     @Autowired
-    public PersonService(PersonDataAccessServiceJDBC personDataAccessServiceJDBC, PersonDataAccessServiceHibernate personDataAccessServiceHibernate) {
-        this.personDataAccessServiceJDBC = personDataAccessServiceJDBC;
+    public PersonService(PersonDataAccessServiceHibernate personDataAccessServiceHibernate) {
+//        this.personDataAccessServiceJDBC = personDataAccessServiceJDBC;
         this.personDataAccessServiceHibernate = personDataAccessServiceHibernate;
     }
 
@@ -22,11 +22,11 @@ private final PersonDataAccessServiceHibernate personDataAccessServiceHibernate;
     }
 
     public void deletePersonById(int personId){
-        personDataAccessServiceJDBC.deletePersonById(personId);
+        personDataAccessServiceHibernate.deletePersonById(personId);
     }
 
     public void deletePersonByUsername(String username){
-        personDataAccessServiceJDBC.deletePersonByUsername(username);
+        personDataAccessServiceHibernate.deletePersonByUsername(username);
     }
 
     public List<Person> getAllPersons(){
@@ -34,11 +34,11 @@ private final PersonDataAccessServiceHibernate personDataAccessServiceHibernate;
     }
 
     public Person updatePerson(Person person, int personId) {
-        return personDataAccessServiceJDBC.updatePerson(person, personId);
+        return personDataAccessServiceHibernate.updatePerson(person, personId);
     }
 
     public Person getPersonByUsername(String username) {
-        return personDataAccessServiceJDBC.getPersonByUsername(username);
+        return personDataAccessServiceHibernate.getPersonByUsername(username);
     }
 
     public Person getPersonById(int id) {

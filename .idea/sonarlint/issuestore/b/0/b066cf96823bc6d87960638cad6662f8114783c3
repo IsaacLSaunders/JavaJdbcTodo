@@ -1,18 +1,6 @@
 
-c
-java:S2259M"HA "NullPointerException" could be thrown; "itemTagDTO" is nullable here.(“ĞşØşÿÿÿÿ
-g
-java:S2259¼"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(ô°ùÿÿÿÿ
-a
-java:S2259­"EA "NullPointerException" could be thrown; "getKey()" can return null.(–„¶£üÿÿÿÿ
-[
-java:S2259"EA "NullPointerException" could be thrown; "getKey()" can return null.(óÃÙ$
-b
-java:S2259½"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(¶ª‡
-M
-java:S1135o"2Complete the task associated to this TODO comment.(İ¹Ò€ùÿÿÿÿ
-d
-java:S3252‡"HUse static access with "java.sql.Statement" for "RETURN_GENERATED_KEYS".(Ùˆö¶úÿÿÿÿ
-d
-java:S3252Ÿ"HUse static access with "java.sql.Statement" for "RETURN_GENERATED_KEYS".(Ùˆö¶úÿÿÿÿ
-A	java:S106¿"+Replace this use of System.out by a logger.(‡É»á
+7
+java:S1220""Move this file to a named package.8ŠÏ»µè1
+]	java:S125"<This block of commented-out lines of code should be removed.(úÚÿÿÿÿÿ8Ï»µè1
+H
+java:S1135o"2Complete the task associated to this TODO comment.(¢êàÈ

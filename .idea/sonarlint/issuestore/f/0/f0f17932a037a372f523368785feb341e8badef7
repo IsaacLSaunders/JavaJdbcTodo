@@ -1,4 +1,14 @@
 
-]	java:S125@"<This block of commented-out lines of code should be removed.(¼è÷ïøÿÿÿÿ8»É²è1
+g	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(è…Î’şÿÿÿÿ8”Ë¶Áè1
+g	java:S112U"FDefine and throw a dedicated exception instead of using a generic one.(Ë¿ÿ±ÿÿÿÿÿ8…¸Áè1
+‰
+java:S11920"gDefine a constant instead of duplicating this literal "Error accessing the database || ARGS: " 5 times.(±üêøÿÿÿÿ8•Ë¶Áè1
+]	java:S125z"<This block of commented-out lines of code should be removed.(¼è÷ïøÿÿÿÿ8¢Ë¶Áè1
+^
+java:S1128"<Remove this unused import 'com.jdbccrud.utility.LoggerUtil'.(Üˆóµûÿÿÿÿ8¬£¸Áè1
 T
-java:S1128"7Remove this unused import 'jakarta.persistence.Entity'.(…ÅÊÆ8‘Ä²è1
+java:S1128"7Remove this unused import 'jakarta.persistence.Entity'.(…ÅÊÆ8¬£¸Áè1
+g
+java:S1128"ERemove this unused import 'jakarta.persistence.PersistenceException'.(§‘êùÿÿÿÿ8­£¸Áè1
+O
+java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8­£¸Áè1

@@ -1,12 +1,17 @@
 package com.jdbccrud.person;
 
+import com.jdbccrud.exception.DatabaseAccessException;
+import com.jdbccrud.utility.LoggerUtil;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceException;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Type;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,43 +27,96 @@ public class PersonDataAccessServiceHibernate implements IPersonDAO{
 
     @Override
     public List<Person> selectAllPersons() {
-        TypedQuery<Person> query = entityManager.createQuery("FROM Person", Person.class);
-        return query.getResultList();
+        try{
+            TypedQuery<Person> query = entityManager.createQuery("FROM Person ORDER BY username", Person.class);
+            return query.getResultList();
+        } catch (Exception e){
+            throw new DatabaseAccessException("Error accessing the database || " + e.getMessage(), e);
+        }
     }
 
     @Override
     @Transactional
     public Person addPerson(Person person) {
-        person.setCreatedDate(LocalDateTime.now());
-        person.setLastModifiedDate(person.getCreatedDate());
-        entityManager.persist(person);
+        try {
+            person.setCreatedDate(LocalDateTime.now());
+            person.setLastModifiedDate(person.getCreatedDate());
+            entityManager.persist(person);
 
-        return entityManager.find(Person.class, person.getId());
+            return entityManager.find(Person.class, person.getId());
+        } catch (Exception e){
+            throw new DatabaseAccessException("Error accessing the database || ARGS: " + person + " || " + e.getMessage(), e);
+        }
     }
 
     @Override
+    @Transactional
     public int deletePersonById(int personId) {
-        return 0;
+        try {
+            Person person = entityManager.find(Person.class, personId);
+            if(person != null){
+                entityManager.remove(person);
+                return 1;
+            } else {
+                //I want to throw an exception for logging purposes if the user inputs a bad userid into the delete person endpoint
+                throw new Exception("Error accessing the database || ARGS: " + personId + " || " + " this person does not exist in the DB.");
+            }
+            //this exception is in case anything goes wrong while executing any of the JPA functionality like a PersistenceException or IllegalStateException
+        } catch (Exception e){
+            throw new DatabaseAccessException(e.getMessage());
+        }
+
     }
 
     @Override
+    @Transactional
     public int deletePersonByUsername(String username) {
-        return 0;
+        try {
+            int deletedCount = entityManager.createQuery(
+                            "DELETE FROM Person WHERE username = :username"
+                    )
+                    .setParameter("username", username)
+                    .executeUpdate();
+
+            if(deletedCount != 0){
+                return deletedCount;
+            } else {
+                //I want to throw an exception for logging purposes if the user inputs a bad userid into the delete person endpoint
+                throw new Exception("Error accessing the database || ARGS: " + username + " || " + " this person does not exist in the DB.");
+            }
+            //this exception is in case anything goes wrong while executing any of the JPA functionality like a PersistenceException or IllegalStateException
+        } catch (Exception e){
+            throw new DatabaseAccessException("Error accessing the database || ARGS: " + username + " || " + e.getMessage(), e);
+        }
     }
 
     @Override
+    @Transactional
     public Person updatePerson(Person person, int personId) {
-        return null;
+        Person currentPerson = entityManager.find(Person.class, personId);
+
+        currentPerson.setFirstName(person.getFirstName());
+        currentPerson.setLastName(person.getLastName());
+        currentPerson.setVersion(person.getVersion());
+        currentPerson.setLastModifiedDate(LocalDateTime.now());
+
+        return entityManager.merge(currentPerson);
     }
 
     @Override
     public Person getPersonByUsername(String username) {
-        TypedQuery<Person> query = entityManager.createQuery(
-                "FROM Person WHERE username='?1'", Person.class
-        );
+        try {
+            TypedQuery<Person> query = entityManager.createQuery(
+                    "FROM Person WHERE username=?1", Person.class
+            );
 
-        return query.setParameter(1,username).getSingleResult();
+            return query.setParameter(1,username).getSingleResult();
+        } catch (Exception e){
+            throw new DatabaseAccessException("Error accessing the database || ARGS: " + username + " || " + e.getMessage(), e);
+        }
 
+
+        //parameters can also be added using :<String>
 //        TypedQuery<Person> query = entityManager.createQuery(
 //                "FROM Person WHERE username=:username", Person.class
 //        );

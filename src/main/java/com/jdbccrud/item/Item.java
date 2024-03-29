@@ -1,16 +1,22 @@
 package com.jdbccrud.item;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.jdbccrud.tag.Tag;
+import com.jdbccrud.utility.MigrationFileUtil;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @Entity
 @Table(name = "item")
-public class Item {
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,16 +41,22 @@ public class Item {
     @Column(name = "version")
     public int version;
 
+    @ManyToOne()
+    @JoinColumn(name = "tag_id")
+    public Tag tag;
+
     public Item() {
+        this.version =  MigrationFileUtil.countMigrationFiles();
     }
 
-    public Item(int asigneeId, LocalDateTime createdDate, LocalDateTime lastModifiedDate, String description, String status, int version) {
+    public Item(int asigneeId, LocalDateTime createdDate, LocalDateTime lastModifiedDate, String description, String status, int version, Tag tag) {
         this.asigneeId = asigneeId;
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
         this.description = description;
         this.status = status;
         this.version = version;
+        this.tag = tag;
     }
 
     @Override
@@ -57,6 +69,7 @@ public class Item {
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
                 ", version=" + version +
+                ", tag=" + tag +
                 '}';
     }
 }
