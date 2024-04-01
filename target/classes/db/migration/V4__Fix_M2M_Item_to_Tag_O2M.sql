@@ -1,5 +1,0 @@
-DROP TABLE IF EXISTS item_tag;
-
-ALTER TABLE item
-ADD COLUMN tag_id INT,
-ADD CONSTRAINT fk_item_tag FOREIGN KEY (tag_id) REFERENCES tag(id);

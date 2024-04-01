@@ -63,3 +63,7 @@ q
 Asrc/main/java/com/jdbccrud/exception/DatabaseAccessException.java,2/8/280de1cbf2e930949d2c9a983995fa839b2e3ba5
 i
 9src/main/java/com/jdbccrud/utility/MigrationFileUtil.java,4/9/49a6ef9011b2f3311a391ff25d0b2a2d6bbdaa78
+s
+Csrc/main/java/com/jdbccrud/exception/ResourceNotFoundException.java,5/6/56cff8eece60efc742df0b6c758d5600d605aa3c
+r
+Bsrc/main/java/com/jdbccrud/exception/GeneralCatchAllException.java,c/c/ccc7f781b03a67b8bc673909891d364d0b5ed4a8

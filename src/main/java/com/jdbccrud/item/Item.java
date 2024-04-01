@@ -42,7 +42,7 @@ public class Item implements Serializable {
     public int version;
 
     @ManyToOne()
-    @JoinColumn(name = "tag_id")
+    @JoinColumn(name = "tag_id", nullable = true)
     public Tag tag;
 
     public Item() {
@@ -69,7 +69,7 @@ public class Item implements Serializable {
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
                 ", version=" + version +
-                ", tag=" + tag +
+                ", tag=" + (tag != null ? tag.getId() : null) +
                 '}';
     }
 }

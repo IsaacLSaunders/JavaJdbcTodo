@@ -1,6 +1,8 @@
 package com.jdbccrud.person;
 
 import com.jdbccrud.exception.DatabaseAccessException;
+import com.jdbccrud.exception.ResourceNotFoundException;
+import com.jdbccrud.tag.Tag;
 import com.jdbccrud.utility.LoggerUtil;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
@@ -80,27 +82,41 @@ public class PersonDataAccessServiceHibernate implements IPersonDAO{
 
             if(deletedCount != 0){
                 return deletedCount;
-            } else {
-                //I want to throw an exception for logging purposes if the user inputs a bad userid into the delete person endpoint
-                throw new Exception("Error accessing the database || ARGS: " + username + " || " + " this person does not exist in the DB.");
             }
-            //this exception is in case anything goes wrong while executing any of the JPA functionality like a PersistenceException or IllegalStateException
-        } catch (Exception e){
-            throw new DatabaseAccessException("Error accessing the database || ARGS: " + username + " || " + e.getMessage(), e);
+            //I want to throw an exception for logging purposes if the user inputs a bad userid into the delete person endpoint
+            throw new ResourceNotFoundException("ARGS: " + username + " || " + " this person does not exist in the DB.");
+        //this exception is in case anything goes wrong while executing any of the JPA functionality like a PersistenceException or IllegalStateException
+        }
+        catch (ResourceNotFoundException e){
+            throw new ResourceNotFoundException(e);
+        }
+        catch (Exception e){
+            throw new DatabaseAccessException(e);
         }
     }
 
     @Override
     @Transactional
     public Person updatePerson(Person person, int personId) {
-        Person currentPerson = entityManager.find(Person.class, personId);
+        try {
+            Person currentPerson = entityManager.find(Person.class, personId);
 
-        currentPerson.setFirstName(person.getFirstName());
-        currentPerson.setLastName(person.getLastName());
-        currentPerson.setVersion(person.getVersion());
-        currentPerson.setLastModifiedDate(LocalDateTime.now());
+            if(currentPerson != null){
+                currentPerson.setFirstName(person.getFirstName());
+                currentPerson.setLastName(person.getLastName());
+                currentPerson.setVersion(person.getVersion());
+                currentPerson.setLastModifiedDate(LocalDateTime.now());
 
-        return entityManager.merge(currentPerson);
+                return entityManager.merge(currentPerson);
+            }
+            throw new ResourceNotFoundException("Resource: " + Person.class + " || Not Found.");
+        }
+        catch (ResourceNotFoundException e){
+            throw new ResourceNotFoundException(e);
+        }
+        catch (Exception e){
+            throw new DatabaseAccessException("Error accessing the database || ARGS: " + personId + " || " + e.getMessage(), e);
+        }
     }
 
     @Override

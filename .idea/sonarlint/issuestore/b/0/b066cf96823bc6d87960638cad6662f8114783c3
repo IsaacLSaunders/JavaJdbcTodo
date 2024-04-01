@@ -1,6 +1,18 @@
 
-7
-java:S1220""Move this file to a named package.8ŠÏ»µè1
-]	java:S125"<This block of commented-out lines of code should be removed.(ŽúÚÿÿÿÿÿ8Ï»µè1
-H
-java:S1135o"2Complete the task associated to this TODO comment.(¢êàÈ
+h
+java:S2259­"EA "NullPointerException" could be thrown; "getKey()" can return null.(–„¶£üÿÿÿÿ8ËÁ¯é1
+i
+java:S2259½"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(ž¶ª‡8ÌÁ¯é1
+n
+java:S2259¼"KA "NullPointerException" could be thrown; "getTimestamp()" can return null.(ô°Žùÿÿÿÿ8ÌÁ¯é1
+j
+java:S2259M"HA "NullPointerException" could be thrown; "itemTagDTO" is nullable here.(“ÐþØþÿÿÿÿ8ÌÁ¯é1
+b
+java:S2259"EA "NullPointerException" could be thrown; "getKey()" can return null.(óÃÙ$8ÌÁ¯é1
+M
+java:S1135o"2Complete the task associated to this TODO comment.(Ý¹Ò€ùÿÿÿÿ
+k
+java:S3252‡"HUse static access with "java.sql.Statement" for "RETURN_GENERATED_KEYS".(Ùˆö¶úÿÿÿÿ8ØÁ¯é1
+k
+java:S3252Ÿ"HUse static access with "java.sql.Statement" for "RETURN_GENERATED_KEYS".(Ùˆö¶úÿÿÿÿ8ÙÁ¯é1
+H	java:S106¿"+Replace this use of System.out by a logger.(‡É»á8ÚÁ¯é1

@@ -1,4 +1,9 @@
 
-H
-java:S1168
-"+Return an empty collection instead of null.(¥¹ï8şˆíä1
+h
+java:S1192,"KDefine a constant instead of duplicating this literal "Resource: " 3 times.( ÒĞ»8æÛİ¹é1
+l
+java:S1192,"ODefine a constant instead of duplicating this literal " || Not Found." 3 times.( ÒĞ»8æÛİ¹é1
+^	java:S125†"<This block of commented-out lines of code should be removed.(¡Áíùÿÿÿÿ8ó‹„ºé1
+^	java:S125Š"<This block of commented-out lines of code should be removed.(ìØâ©øÿÿÿÿ8÷Ûİ¹é1
+Y
+java:S1128"7Remove this unused import 'com.jdbccrud.person.Person'.(çÍÄ¤ÿÿÿÿÿ8øÛİ¹é1

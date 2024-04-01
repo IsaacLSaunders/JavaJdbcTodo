@@ -64,7 +64,6 @@ public class Tag implements Serializable {
                 ", lastModifiedDate=" + lastModifiedDate +
                 ", name='" + name + '\'' +
                 ", version=" + version +
-                ", items=" + items +
                 '}';
     }
 }
