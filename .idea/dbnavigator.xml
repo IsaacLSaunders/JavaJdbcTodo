@@ -27,19 +27,7 @@ SELECT * FROM tag;
 SELECT i.id, i.asignee_id, i.created_date, i.last_modified_date, i.description, i.status, i.version
 FROM item as i
 JOIN person ON i.asignee_id = person.id
-WHERE person.username = 'BiggyDB'
-
-SELECT * FROM flyway_schema_history;
-
-SELECT * FROM item WHERE tag_id IS NOT NULL;
-
-SELECT * FROM flyway_schema_history;
-
-SELECT * FROM tag
-
-SELECT * FROM item
-
-DROP TABLE flyway_schema_history CASCADE;]]></console>
+WHERE person.username = 'BiggyDB']]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

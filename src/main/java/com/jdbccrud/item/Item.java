@@ -32,30 +32,34 @@ public class Item implements Serializable {
     @Column(name = "last_modified_date")
     public LocalDateTime lastModifiedDate;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     public String description;
 
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     public String status;
 
     @Column(name = "version")
     public int version;
 
+    @Transient
+    public int tagIdentity;
+
     @ManyToOne()
-    @JoinColumn(name = "tag_id", nullable = true)
+    @JoinColumn(name = "tag_id")
     public Tag tag;
 
     public Item() {
         this.version =  MigrationFileUtil.countMigrationFiles();
     }
 
-    public Item(int asigneeId, LocalDateTime createdDate, LocalDateTime lastModifiedDate, String description, String status, int version, Tag tag) {
+    public Item(int asigneeId, LocalDateTime createdDate, LocalDateTime lastModifiedDate, String description, String status, int version, int tagIdentity, Tag tag) {
         this.asigneeId = asigneeId;
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
         this.description = description;
         this.status = status;
         this.version = version;
+        this.tagIdentity = tagIdentity;
         this.tag = tag;
     }
 
@@ -69,6 +73,7 @@ public class Item implements Serializable {
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
                 ", version=" + version +
+                ", tagIdentity = " + tagIdentity +
                 ", tag=" + (tag != null ? tag.getId() : null) +
                 '}';
     }

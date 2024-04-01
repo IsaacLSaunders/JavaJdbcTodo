@@ -32,7 +32,8 @@ public class TagDataAccessServiceHibernate implements ITagDAO{
             return query.getResultList();
         } catch (Exception e){
             throw new DatabaseAccessException("Error accessing the database || " + e.getMessage(), e);
-        }    }
+        }
+    }
 
     @Override
     public Tag getTagById(int tagId) {
@@ -116,22 +117,22 @@ public class TagDataAccessServiceHibernate implements ITagDAO{
     public int deleteTagById(int tagId) {
         try{
 
-            //THIS REMOVES THE ASSOCIATION BETWEEN ITEM AND TAG
-                //for loop is not efficient as it opens up a db connection for every update
-            Tag currentTag = entityManager.find(Tag.class, tagId);
-            if(currentTag != null){
-                for (Item item : currentTag.getItems()){
-                    item.setTag(null);
-                    entityManager.merge(item);
-                }
-            }
-            entityManager.flush();
+//            //THIS REMOVES THE ASSOCIATION BETWEEN ITEM AND TAG
+//                //for loop is not efficient as it opens up a db connection for every update
+//            Tag currentTag = entityManager.find(Tag.class, tagId);
+//            if(currentTag != null){
+//                for (Item item : currentTag.getItems()){
+//                    item.setTag(null);
+//                    entityManager.merge(item);
+//                }
+//            }
+//            entityManager.flush();
 
 
-//            //THIS REMOVES THE ASSOCIATION BETWEEN ITEM AND TAG WITH A BULK DB UPDATE
-//            entityManager.createQuery("UPDATE Item i SET i.tag.id = null WHERE i.tag.id = :tagId")
-//                    .setParameter("tagId", tagId)
-//                    .executeUpdate();
+            //THIS REMOVES THE ASSOCIATION BETWEEN ITEM AND TAG WITH A BULK DB UPDATE
+            entityManager.createQuery("UPDATE Item i SET i.tag.id = null WHERE i.tag.id = :tagId")
+                    .setParameter("tagId", tagId)
+                    .executeUpdate();
 
 
             //THIS DELETES THE TAG
@@ -159,7 +160,20 @@ public class TagDataAccessServiceHibernate implements ITagDAO{
     @Transactional
     @Override
     public Tag addTag(Tag newTag) {
-        return null;
+        try{
+            if(newTag.name != null && newTag.version != 0) {
+                newTag.setCreatedDate(LocalDateTime.now());
+                newTag.setLastModifiedDate(newTag.getCreatedDate());
+                entityManager.persist(newTag);
+
+                return entityManager.find(Tag.class, newTag.getId());
+            }
+            throw new DatabaseAccessException("Error accessing the database || ARGS: " + newTag + " ||");
+        } catch (DatabaseAccessException e) {
+            throw new DatabaseAccessException(e);
+        } catch (Exception e){
+            throw new DatabaseAccessException(e);
+        }
     }
 
     @Transactional

@@ -23,6 +23,7 @@ import java.util.List;
 @Entity
 @Table(name = "person")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@NamedQuery(name = "Person.findByUsername", query = "SELECT p FROM Person p WHERE p.username = :username")
 public class Person implements Serializable {
 
     @Id

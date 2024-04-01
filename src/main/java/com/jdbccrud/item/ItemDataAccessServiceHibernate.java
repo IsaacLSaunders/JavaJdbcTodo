@@ -1,31 +1,137 @@
 package com.jdbccrud.item;
 
+import com.jdbccrud.exception.DatabaseAccessException;
+import com.jdbccrud.exception.ResourceNotFoundException;
+import com.jdbccrud.person.Person;
+import com.jdbccrud.tag.Tag;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository
 public class ItemDataAccessServiceHibernate implements IItemDAO{
+
+    private final EntityManager entityManager;
+
+    public ItemDataAccessServiceHibernate(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     @Override
     public List<Item> getAllItems() {
-        return null;
+        try{
+            TypedQuery<Item> query = entityManager.createQuery("FROM Item ORDER BY createdDate", Item.class);
+            return query.getResultList();
+        } catch (Exception e){
+            throw new DatabaseAccessException("Error accessing the database || " + e.getMessage(), e);
+        }
     }
 
     @Override
     public List<Item> getAllItemsByUsername(String username) {
-        return null;
+        try{
+            //use the named query from the person class so we dont have to keep writing out create query statements everywhere we need a person by username
+            Person person = entityManager.createNamedQuery("Person.findByUsername", Person.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+
+            if(person != null){
+                return person.getItems();
+            }
+
+            throw new ResourceNotFoundException("Resource: " + Tag.class + " || Not Found.");
+        }
+        catch (ResourceNotFoundException e){
+            throw new ResourceNotFoundException(e);
+        }
+        catch (Exception e){
+            throw new DatabaseAccessException(e);
+        }
     }
 
     @Override
     public List<Item> getAllItemsByUserId(int userId) {
-        return null;
+        try{
+            Person person = entityManager.find(Person.class, userId);
+
+            if(person != null){
+                return person.getItems();
+            }
+
+            throw new ResourceNotFoundException("Resource: " + Tag.class + " || Not Found.");
+        }
+        catch (ResourceNotFoundException e){
+            throw new ResourceNotFoundException(e);
+        }
+        catch (Exception e){
+            throw new DatabaseAccessException(e);
+        }
     }
 
+    @Transactional
     @Override
     public Item addItemByUsername(Item newItem, String username) {
-        return null;
+        try{
+            //use the named query from the person class so we dont have to keep writing out create query statements everywhere we need a person by username
+            Person person = entityManager.createNamedQuery("Person.findByUsername", Person.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+
+            Tag tag = entityManager.find(Tag.class, newItem.getTagIdentity());
+
+            if(person != null){
+                newItem.setCreatedDate(LocalDateTime.now());
+                newItem.setLastModifiedDate(newItem.getCreatedDate());
+                newItem.setAsigneeId(person.getId());
+                newItem.setTag(tag);
+
+                entityManager.persist(newItem);
+
+                return entityManager.find(Item.class, newItem.getId());
+            }
+
+            throw new ResourceNotFoundException("Resource: " + Tag.class + " || Not Found.");
+        }
+        catch (ResourceNotFoundException e){
+            throw new ResourceNotFoundException(e);
+        }
+        catch (Exception e){
+            throw new DatabaseAccessException(e);
+        }
     }
 
+    @Transactional
     @Override
     public Item addItemByUserId(Item newItem, int id) {
-        return null;
+        try{
+            //use the named query from the person class so we dont have to keep writing out create query statements everywhere we need a person by username
+            Person person = entityManager.find(Person.class, id);
+
+            Tag tag = entityManager.find(Tag.class, newItem.getTagIdentity());
+
+            if(person != null){
+                newItem.setCreatedDate(LocalDateTime.now());
+                newItem.setLastModifiedDate(newItem.getCreatedDate());
+                newItem.setAsigneeId(person.getId());
+                newItem.setTag(tag);
+
+                entityManager.persist(newItem);
+
+                return entityManager.find(Item.class, newItem.getId());
+            }
+
+            throw new ResourceNotFoundException("Resource: " + Tag.class + " || Not Found.");
+        }
+        catch (ResourceNotFoundException e){
+            throw new ResourceNotFoundException(e);
+        }
+        catch (Exception e){
+            throw new DatabaseAccessException(e);
+        }
     }
 
     @Override
