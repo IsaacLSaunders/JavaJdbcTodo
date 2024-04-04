@@ -87,3 +87,23 @@
   Position: 88] [insert into item (asignee_id,created_date,description,last_modified_date,status,tag_id,tag_identity,version) values (?,?,?,?,?,?,?,?)]
 2024-04-01 13:59:57 ERROR com.jdbccrud.utility.LoggerUtil - ERROR: com.jdbccrud.exception.DatabaseAccessException: jakarta.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call
 2024-04-01 14:01:02 ERROR com.jdbccrud.utility.LoggerUtil - ERROR: com.jdbccrud.exception.DatabaseAccessException: jakarta.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call
+2024-04-01 14:09:41 ERROR com.jdbccrud.utility.LoggerUtil - ERROR: com.jdbccrud.exception.DatabaseAccessException: com.jdbccrud.exception.DatabaseAccessException: Error accessing the database || ARGS: Tag{id=0, createdDate=null, lastModifiedDate=null, name='null', version=1} ||
+2024-04-02 09:33:11 ERROR com.jdbccrud.utility.LoggerUtil - ERROR: com.jdbccrud.exception.DatabaseAccessException: Error accessing the database || ARGS: Tag{id=0, createdDate=null, lastModifiedDate=null, name='null', version=1} ||
+2024-04-02 09:36:30 ERROR com.jdbccrud.utility.LoggerUtil - ERROR: com.jdbccrud.exception.ResourceNotFoundException: ARGS: 13 ||  this person does not exist in the DB.
+2024-04-02 09:42:51 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "ese"
+2024-04-02 09:43:29 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "ese"
+2024-04-02 09:44:35 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "ese"
+2024-04-02 10:09:24 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:10:20 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:12:50 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:13:18 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:19:22 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:20:36 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:21:50 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:24:10 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:25:23 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:29:01 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.dao.EmptyResultDataAccessException: No result found for query [SELECT p FROM Person p WHERE p.username = :username]
+2024-04-02 10:35:28 WARN  com.jdbccrud.utility.LoggerUtil - ERROR: jakarta.persistence.EntityNotFoundException: Entity with 6 not found.
+2024-04-02 10:36:40 WARN  com.jdbccrud.utility.LoggerUtil - ERROR: jakarta.persistence.EntityNotFoundException: Entity with userId6 not found.
+2024-04-02 10:36:53 WARN  com.jdbccrud.utility.LoggerUtil - ERROR: jakarta.persistence.EntityNotFoundException: Entity with userId 6 not found.
+2024-04-02 10:39:21 WARN  com.jdbccrud.utility.LoggerUtil - WARN: org.springframework.orm.jpa.JpaObjectRetrievalFailureException: Entity with userId 6 not found.

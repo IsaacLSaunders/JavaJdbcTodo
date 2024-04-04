@@ -5,11 +5,13 @@ import com.jdbccrud.exception.ResourceNotFoundException;
 import com.jdbccrud.person.Person;
 import com.jdbccrud.tag.Tag;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -23,17 +25,12 @@ public class ItemDataAccessServiceHibernate implements IItemDAO{
 
     @Override
     public List<Item> getAllItems() {
-        try{
             TypedQuery<Item> query = entityManager.createQuery("FROM Item ORDER BY createdDate", Item.class);
             return query.getResultList();
-        } catch (Exception e){
-            throw new DatabaseAccessException("Error accessing the database || " + e.getMessage(), e);
-        }
     }
 
     @Override
     public List<Item> getAllItemsByUsername(String username) {
-        try{
             //use the named query from the person class so we dont have to keep writing out create query statements everywhere we need a person by username
             Person person = entityManager.createNamedQuery("Person.findByUsername", Person.class)
                     .setParameter("username", username)
@@ -43,33 +40,20 @@ public class ItemDataAccessServiceHibernate implements IItemDAO{
                 return person.getItems();
             }
 
-            throw new ResourceNotFoundException("Resource: " + Tag.class + " || Not Found.");
-        }
-        catch (ResourceNotFoundException e){
-            throw new ResourceNotFoundException(e);
-        }
-        catch (Exception e){
-            throw new DatabaseAccessException(e);
-        }
+            return new ArrayList<>();
     }
 
     @Override
     public List<Item> getAllItemsByUserId(int userId) {
-        try{
-            Person person = entityManager.find(Person.class, userId);
 
-            if(person != null){
-                return person.getItems();
-            }
+        Person person = entityManager.find(Person.class, userId);
 
-            throw new ResourceNotFoundException("Resource: " + Tag.class + " || Not Found.");
+        if(person == null){
+            throw new EntityNotFoundException("Entity with userId " + userId + " not found.");
         }
-        catch (ResourceNotFoundException e){
-            throw new ResourceNotFoundException(e);
-        }
-        catch (Exception e){
-            throw new DatabaseAccessException(e);
-        }
+
+        return person.getItems();
+
     }
 
     @Transactional

@@ -115,7 +115,7 @@ public class TagDataAccessServiceHibernate implements ITagDAO{
     @Transactional
     @Override
     public int deleteTagById(int tagId) {
-        try{
+
 
 //            //THIS REMOVES THE ASSOCIATION BETWEEN ITEM AND TAG
 //                //for loop is not efficient as it opens up a db connection for every update
@@ -147,20 +147,11 @@ public class TagDataAccessServiceHibernate implements ITagDAO{
             }
 
             throw new ResourceNotFoundException("ARGS: " + tagId + " || " + " this person does not exist in the DB.");
-
-        }
-        catch (ResourceNotFoundException e){
-            throw new ResourceNotFoundException(e);
-        }
-        catch (Exception e){
-            throw new DatabaseAccessException(e);
-        }
     }
 
     @Transactional
     @Override
     public Tag addTag(Tag newTag) {
-        try{
             if(newTag.name != null && newTag.version != 0) {
                 newTag.setCreatedDate(LocalDateTime.now());
                 newTag.setLastModifiedDate(newTag.getCreatedDate());
@@ -169,11 +160,6 @@ public class TagDataAccessServiceHibernate implements ITagDAO{
                 return entityManager.find(Tag.class, newTag.getId());
             }
             throw new DatabaseAccessException("Error accessing the database || ARGS: " + newTag + " ||");
-        } catch (DatabaseAccessException e) {
-            throw new DatabaseAccessException(e);
-        } catch (Exception e){
-            throw new DatabaseAccessException(e);
-        }
     }
 
     @Transactional
